@@ -21,7 +21,36 @@ export async function GET(req: NextRequest) {
           id: app.id,
         },
         data: {
-          totalEvents: [],
+          totalEvents: [
+            {
+              name: "Sunday",
+              events: 0,
+            },
+            {
+              name: "Monday",
+              events: 0,
+            },
+            {
+              name: "Tuesday",
+              events: 0,
+            },
+            {
+              name: "Wednesday",
+              events: 0,
+            },
+            {
+              name: "Thursdaay",
+              events: 0,
+            },
+            {
+              name: "Friday",
+              events: 0,
+            },
+            {
+              name: "Saturday",
+              events: 0,
+            },
+          ],
         },
       });
     }

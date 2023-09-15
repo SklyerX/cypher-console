@@ -1,12 +1,10 @@
 "use client";
 
 import clsx from "clsx";
-import Image from "next/image";
-import { useEffect, useState } from "react";
 import { Book, Github, Home, LogIn, Menu } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
-
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const [isTop, setIsTop] = useState<boolean>(true);
@@ -64,7 +62,7 @@ export default function Navbar() {
             Docs
           </Link>
           <Link
-            href="https://github.com/SkylerX/ease-scrypt"
+            href="https://github.com/SklyerX/cypher-console"
             className="text-sm flex flex-row gap-2 items-center justify-center rounded-full border border-foreground px-3 py-1 mt-1 hover:bg-white hover:text-black"
           >
             <Github className="w-4 h-4" />
@@ -109,7 +107,7 @@ export default function Navbar() {
               </div>
               <div className="w-full rounded-b-md border-t border-input px-4 py-1 pb-2">
                 <Link
-                  href="https://github.com/SkylerX/ease-scrypt"
+                  href="https://github.com/SklyerX/cypher-console"
                   className="text-sm flex flex-row gap-2 items-center justify-center rounded-full border border-background py-2 mt-1"
                 >
                   <Github className="w-4 h-4" />

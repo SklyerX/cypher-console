@@ -36,7 +36,7 @@ export async function GET(req: NextRequest, { params }: Props) {
       { status: 200 }
     );
   } catch (err) {
-    return new Response("Something went wrong while creating a new app!", {
+    return new Response("Something went wrong while fetching apps!", {
       status: 500,
     });
   }
@@ -71,7 +71,7 @@ export async function PATCH(req: NextRequest, { params }: Props) {
       { status: 200 }
     );
   } catch (err) {
-    return new Response("Something went wrong while creating a new app!", {
+    return new Response("Something went wrong while updating this app!", {
       status: 500,
     });
   }

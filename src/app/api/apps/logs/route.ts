@@ -1,5 +1,6 @@
 import { db } from "@/lib/db";
 import { AuditLogValidator } from "@/lib/validators/audit-log";
+import { DaysOfTheWeek } from "@/types";
 import { getIpInfo } from "@/utils/api";
 import { NextRequest } from "next/server";
 import { ZodError } from "zod";
@@ -72,25 +73,19 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    const newEventData: any[] = _app.totalEvents ? _app.totalEvents : [];
+    const newEventData = _app.totalEvents as DaysOfTheWeek[];
 
     const currentDay = new Date().getDay().toString() as Days;
 
     const dayOfTheWeekIndex = newEventData.findIndex(
-      (event) => event.day === days[currentDay]
+      (event) => event.name === days[currentDay]
     );
 
-    if (dayOfTheWeekIndex === -1) {
-      newEventData.push({
-        day: days[currentDay],
-        totalEvents: 1,
-      });
-    } else {
-      newEventData[dayOfTheWeekIndex] = {
-        day: days[currentDay],
-        totalEvents: newEventData[dayOfTheWeekIndex].totalEvents + 1,
-      };
-    }
+    newEventData[dayOfTheWeekIndex] = {
+      name: days[currentDay],
+      events: newEventData[dayOfTheWeekIndex].events + 1,
+    };
+
     await db.app.update({
       where: {
         id: _app.id,
@@ -101,7 +96,9 @@ export async function POST(req: NextRequest) {
           eventType === "ENCRYPT" ? _app.totalEncrypts + 1 : _app.totalEncrypts,
         totalDecrypts:
           eventType === "DECRYPT" ? _app.totalDecrypts + 1 : _app.totalDecrypts,
-        totalEvents: [...newEventData],
+        totalEvents: {
+          set: [...newEventData],
+        },
       },
     });
 
@@ -110,7 +107,7 @@ export async function POST(req: NextRequest) {
     if (err instanceof ZodError)
       return new Response(JSON.stringify(err), { status: 400 });
     console.error(err);
-    return new Response("Something went wrong while creating a new app!", {
+    return new Response("Something went wrong while creating a new audit!", {
       status: 500,
     });
   }

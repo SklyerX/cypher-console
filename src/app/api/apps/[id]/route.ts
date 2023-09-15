@@ -75,7 +75,7 @@ export async function DELETE(req: NextRequest, { params }: Props) {
 
     return new Response("Successfully deleted app", { status: 200 });
   } catch (err) {
-    return new Response("Something went wrong while creating a new app!", {
+    return new Response("Something went wrong while deleting a new app!", {
       status: 500,
     });
   }

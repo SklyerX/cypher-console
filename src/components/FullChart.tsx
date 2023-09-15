@@ -41,13 +41,22 @@ const data = [
   },
 ];
 
-export default function FullChart() {
+interface DaysOfTheWeek {
+  name: string;
+  events: number;
+}
+
+interface Props {
+  events: Array<DaysOfTheWeek>;
+}
+
+export default function FullChart({ events }: Props) {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <LineChart
         width={500}
         height={300}
-        data={data}
+        data={events}
         margin={{
           top: 5,
           right: 30,

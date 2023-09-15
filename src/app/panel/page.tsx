@@ -42,7 +42,7 @@ export default function Panel() {
           </div>
           <div className="flex items-center flex-wrap gap-5 justify-center">
             {data?.apps.map((app: AppProps, index: number) => (
-              <AppCard app={app} key={index} />
+              <AppCard app={app} key={index} events={app.totalEvents} />
             ))}
             {!data?.apps || data.apps.length === 0 ? (
               <div className="flex items-center flex-col">

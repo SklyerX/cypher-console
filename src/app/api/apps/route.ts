@@ -41,7 +41,36 @@ export async function POST(req: NextRequest) {
             updatedAt: new Date(),
             totalDecrypts: 0,
             totalEncrypts: 0,
-            totalEvents: [],
+            totalEvents: [
+              {
+                name: "Sunday",
+                events: 0,
+              },
+              {
+                name: "Monday",
+                events: 0,
+              },
+              {
+                name: "Tuesday",
+                events: 0,
+              },
+              {
+                name: "Wednesday",
+                events: 0,
+              },
+              {
+                name: "Thursdaay",
+                events: 0,
+              },
+              {
+                name: "Friday",
+                events: 0,
+              },
+              {
+                name: "Saturday",
+                events: 0,
+              },
+            ],
           },
         },
       },
@@ -77,8 +106,6 @@ export async function GET(req: NextRequest) {
     const page = Number(searchParams.get("page")) || 1;
     const per_page = Number(searchParams.get("per_page")) || 10;
 
-    console.log(per_page, page);
-
     let limit: number = per_page;
 
     if (limit > 25) limit = 25;
@@ -108,6 +135,7 @@ export async function GET(req: NextRequest) {
         id: true,
         name: true,
         createdAt: true,
+        totalEvents: true,
       },
     });
 

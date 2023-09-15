@@ -14,11 +14,11 @@ export default function Page({ params }: { params: { id: string } }) {
     <DashboardLayout>
       <div className="w-full bg-[#212121] rounded-md py-8">
         <div className="w-full h-[200px]">
-          <FullChart />
+          <FullChart events={data?.totalEvents ?? []} />
         </div>
       </div>
-      <div className="mt-8 flex items-center flex-wrap gap-x-5">
-        <div className="bg-[#212121] p-3 h-[150px] flex flex-col justify-between rounded-md w-11/12 sm:w-[300px] md:w-[350px] flex-1">
+      <div className="mt-8 flex items-center justify-center sm:justify-normal flex-wrap gap-5">
+        <div className="bg-[#212121] p-3 h-[150px] flex flex-col justify-between rounded-md w-11/12 md:w-[300px] sm:flex-1">
           <div className="space-y-2">
             <span className="text-xl">
               <CountUp end={data?.totalDecrypts ?? 0} duration={1.5} />
@@ -34,7 +34,7 @@ export default function Page({ params }: { params: { id: string } }) {
             </Link>
           </div>
         </div>
-        <div className="bg-[#212121] p-3 h-[150px] flex flex-col justify-between rounded-md w-11/12 sm:w-[300px] md:w-[350px] flex-1">
+        <div className="bg-[#212121] p-3 h-[150px] flex flex-col justify-between rounded-md w-11/12 md:w-[300px] sm:flex-1">
           <div className="space-y-2">
             <span className="text-xl">
               <CountUp end={data?.totalEncrypts ?? 0} duration={1.5} />
@@ -50,7 +50,7 @@ export default function Page({ params }: { params: { id: string } }) {
             </Link>
           </div>
         </div>
-        <div className="bg-[#212121] p-3 h-[150px] flex flex-col justify-between rounded-md w-11/12 sm:w-[300px] md:w-[350px] flex-1">
+        <div className="bg-[#212121] p-3 h-[150px] flex flex-col justify-between rounded-md w-11/12 md:w-[300px] sm:flex-1">
           <div className="space-y-2">
             <span className="text-xl">
               {data?.createdAt &&

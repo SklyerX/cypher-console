@@ -3,12 +3,20 @@ import PlaceholderChart from "./Chart";
 import { formatDistanceToNowStrict } from "date-fns";
 import Link from "next/link";
 import { Box } from "lucide-react";
+import axios from "axios";
+import getAppInfo from "@/hooks/react-query/get-app-info";
+
+interface DaysOfTheWeek {
+  name: string;
+  events: number;
+}
 
 interface Props {
   app: AppProps;
+  events: Array<DaysOfTheWeek>;
 }
 
-export default function AppCard({ app }: Props) {
+export default function AppCard({ app, events }: Props) {
   return (
     <Link
       href={`/panel/${app.id}`}
@@ -19,7 +27,7 @@ export default function AppCard({ app }: Props) {
         <h3 className="text-xl font-medium">{app.name}</h3>
       </div>
       <p className="text-sm text-foreground/60">{app.id}</p>
-      <PlaceholderChart />
+      <PlaceholderChart events={events ?? []} />
       <div className="w-full flex text-sm mt-5">
         {formatDistanceToNowStrict(new Date(app.createdAt), {
           addSuffix: true,
