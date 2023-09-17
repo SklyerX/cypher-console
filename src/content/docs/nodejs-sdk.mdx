@@ -1,0 +1,79 @@
+---
+title: Node.js
+description: Get started with the NodeJS SDK
+---
+
+import Alert from "./alerts.tsx";
+
+### Node.js SDK
+
+SDK to integrate Phase in server-side applications running Node.js.
+
+The Node.js SDK allows you to encrypt data server-side, as well as decrypt data.
+
+- [@sklyerx/cypher](https://npmjs.org/sklyerx/cypher)
+- [github.com/SkylerX/cypher-nodejs-sdk](https://github.org/SkylerX/cypher-nodejs-sdk)
+
+<br />
+
+<Alert text="In order to use the Node.js sdk you will need to create an account and add a new app. You require the APP_ID, APP_SECRET, and JWT_SECRET in order to properly use the app" />
+
+---
+
+#### Install the SDK
+
+The Node.js SDK is distributed via [npm](https://npmjs.org). You can install it using the following command for your preferred package manager.
+
+```
+npm install @sklyerx/phase-node
+```
+
+---
+
+#### Import the SDK
+
+Once installed, you can import the Node.js SDK into your project.
+
+```js
+const Cypher = require("@sklyerx/cypher");
+```
+
+<strong>ESM</strong>
+
+```js
+import Cypher from "@sklyerx/cypher";
+```
+
+---
+
+#### Initialize the SDK
+
+initialize the SDK with your `APP_ID`, `APP_SECRET`, and `JWT_SECRET`
+
+```js
+const cypher = new Cypher({
+  appId: APP_ID,
+  appSecret: APP_SECRET,
+  JWT_SECRET: JWT_SECRET,
+});
+```
+
+---
+
+#### Usage
+
+#### Encrypt
+
+The `encrypt` API allows you to encrypt data. It returns an encrypted string in the Cypher format.
+
+```js
+const ciphertext = cypher.encrypt("hello world");
+```
+
+#### Decrypt
+
+The `decrypt` API allows you to decrypt data the encrypted data as long as you have it in the `Cypher Format` and you have the correct credentials.
+
+```js
+const plaintext = await phase.decrypt(ciphertext);
+```
