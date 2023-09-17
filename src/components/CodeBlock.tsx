@@ -15,9 +15,17 @@ function RenderCodeblockContext() {
       <span className="text-gray-700">// Initialize the SDK</span>
       <br />
       <span>
-        const cypher = new Cypher(
-        <span className="text-gray-500">APP_ID</span>,
-        <span className="text-gray-500">APP_SECRET</span>);
+        const cypher = <span className="text-yellow-500">new</span>{" "}
+        <span className="text-red-500">Cypher</span>(&#123;
+        <br />
+        <div className="ml-1">
+          appId: <span className="text-gray-500">APP_ID</span>,
+          <br />
+          appSecret: <span className="text-gray-500">APP_ID</span>,
+          <br />
+          JWT_SECRET: <span className="text-gray-500">JWT_SECRET</span>,
+        </div>
+        &#125;);
       </span>
       <br />
       <br />
