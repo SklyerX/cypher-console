@@ -44,3 +44,19 @@
     @apply bg-background text-foreground overflow-x-hidden;
   }
 }
+
+/* Hide both vertical and horizontal scrollbars */
+::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for webkit (Chrome, Safari, etc.) */
+}
+
+/* Hide scrollbar for Firefox */
+* {
+  scrollbar-width: none;
+}
+
+/* Hide scrollbar for Internet Explorer and Edge */
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
